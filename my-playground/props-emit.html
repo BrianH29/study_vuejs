@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <p>{{ num, str }}</p>
+    <app-header v-on:press="pressMe"></app-header>
+    <app-content v-on:increase="increaseNum"></app-content>
+    <app-content2 v-on:decrease="decreaseNum"></app-content2>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    let appHeader = {
+      template : '<button v-on:click="press">click me</button>',
+      methods: {
+        press: function(){
+          this.$emit('press'); 
+        }
+      }
+    }
+
+    let appContent = {
+      template : '<button v-on:click="increase">add</button>',
+      methods: {
+        increase: function(){
+          this.$emit('increase');
+        }
+      }
+    }
+
+    let appContent2 = {
+      template: '<button v-on:click="decrease">minus</button>',
+      methods:{
+        decrease: function(){
+          this.$emit('decrease'); 
+        }
+      }
+    }
+
+    new Vue({
+      el: '#app',
+      components: {
+        'app-header': appHeader,
+        'app-content': appContent,
+        'app-content2': appContent2,
+      },
+      methods:{
+        pressMe: function(){
+          console.log('SWAG~~~~');
+        },
+        increaseNum: function(){
+          this.num++;
+          console.log(this.str);
+        },
+        decreaseNum : function(){
+          this.num--; 
+          console.log(this.str2); 
+        }
+      },
+      data:{
+        num:10,
+        str: 'hi',
+        str2 : 'goodbye'
+      }
+    });
+  </script>
+</body>
+</html>
