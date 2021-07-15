@@ -1,2 +1,4 @@
-# study_vuejs
-studying vue
+##### studying vuejs
+
+- [ ] understanding basic vuejs
+- [ ] to catch the concept 
